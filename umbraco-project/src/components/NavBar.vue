@@ -4,8 +4,9 @@
         
     <nav>
    <div class="menu-item">
-       <Dropdown  title="Setting" :items="Setting"/> 
-       <a href="#"><vue-fontawesome icon="user" size="2" color="lightgray"></vue-fontawesome></a></div>
+       <Dropdown title=""  :items="Setting" /> 
+       <a href="#"><vue-fontawesome icon="user" size="2" color="lightgray"></vue-fontawesome></a>
+       </div>
     </nav>
   </div>
 </template>
@@ -57,7 +58,7 @@ nav{
 
 .menu-item{
     color: azure;
-    padding: 10px 25px;
+    padding: 2px 38px;
     position: relative;
     display: flex;
 }  
