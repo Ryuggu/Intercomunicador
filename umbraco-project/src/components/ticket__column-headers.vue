@@ -44,6 +44,11 @@ export default {
 <style scoped>
 /*ticket__column-headers*/
 
+.column-headers{
+    display: flex;
+    flex-direction: row;
+}
+
 .ticket-header {
     display: flex; 
     flex: 1;

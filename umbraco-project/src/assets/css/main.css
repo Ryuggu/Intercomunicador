@@ -11,12 +11,10 @@
 
 
 body {
-    background-color: white;
+    background-color:#e3dfdd;
 }
 .page__container {
     width: 80%;
-    height: 800px;
-    background-color:#e3dfdd;
     margin: 0 auto 0 auto;
 }
 
