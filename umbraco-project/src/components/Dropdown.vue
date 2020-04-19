@@ -30,7 +30,6 @@ export default {
 nav .menu-item .sub-menu{
     position: absolute;
     background-color:#F6EEE7;
-    border-radius: 16px 16px 16px 16px; 
     padding: 25px 15px;
     top:100%;
     left:10%;

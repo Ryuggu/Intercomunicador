@@ -71,8 +71,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
-
 .vdatetime-input {
   background-color: #152235;
   color: #fff;
@@ -98,12 +96,36 @@ export default {
   color: #1b254f;
 }
 
+/*date time picker inactive items*/
+.vdatetime-year-picker__item,
+.vdatetime-month-picker__item {
+  color: #101F3B;
+}
+
+/*day picker month color*/
+.vdatetime-calendar__current--month {
+  color: #101F3B;
+}
+
+/*day name color*/
+.vdatetime-calendar__month__weekday {
+  color: #101F3B;
+}
+
+/*day color*/
+.vdatetime-calendar__month__day > span > span,
+.vdatetime-time-picker__item {
+  color: #101F3B;
+}
+
+
 .filter {
   margin: auto;
   background-color: #00f;
   font-family: "Lato", sans-serif;
   color: #fff;
   padding: 1rem 0;
+  box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
 }
 
 .filter__options {
@@ -134,6 +156,7 @@ export default {
   background-color: #39d18c;
   color: #fff;
   transition: 250ms;
+  box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.50);
 
   &:hover {
     background-color: lighten(#39d18c, 10%);

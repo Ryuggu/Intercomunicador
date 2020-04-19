@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <AppFilter />
+    
     <div class="page__container">
+      <AppFilter />
       <AllTicketsColumnHeaders />
       <AllTicketsStats />
       <TicketColumnHeaders />

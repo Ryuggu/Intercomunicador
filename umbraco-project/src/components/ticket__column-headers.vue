@@ -56,7 +56,7 @@ export default {
     height: 48px;
     margin-right: 8px;
     margin-top: 20px;
-    box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
 }
 
 .ticket-header:last-of-type { /*no margin on the last element*/

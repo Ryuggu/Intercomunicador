@@ -37,6 +37,8 @@ export default {
 .header__title{
     text-align: center;
     padding-top: 25px;
+    background-color: #1B264F;
+    margin-bottom: 24px;
 
 }
 
