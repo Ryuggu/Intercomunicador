@@ -6,7 +6,8 @@ import "font-awesome/css/font-awesome.min.css";
 
 /*CSS*/
 import "@/assets/css/main.css";
-import '@/assets/style/style.css';
+
+
 
 import { Datetime } from "vue-datetime";
 import "vue-datetime/dist/vue-datetime.css";
@@ -38,7 +39,3 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
-
-
-
- 

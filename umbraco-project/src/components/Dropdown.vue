@@ -14,6 +14,7 @@
  </div>
 
 </template>
+
 <script>
 export default {
     name:'Dropdown',
@@ -25,3 +26,29 @@ export default {
     }
 }
 </script>
+<style scoped>
+nav .menu-item .sub-menu{
+    position: absolute;
+    background-color:#F6EEE7;
+    padding: 25px 15px;
+    top:100%;
+    left:10%;
+    inline-size: max-content;
+    color:inherit;
+    
+}
+nav .menu-item .sub-menu a{
+    color:black;
+    padding:35px 5px;
+    text-decoration: none;
+    }
+.fade-enter-activ,
+.fade-leave-active{
+    transition: all.4s ease-out;
+
+}
+.fade-enter,
+.fade-enter-to{
+    opacity: 0;
+}
+</style>
