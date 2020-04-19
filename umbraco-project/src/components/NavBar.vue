@@ -35,3 +35,42 @@ export default {
     
 }
 </script>
+<style scoped>
+.header__title{
+    text-align: center;
+    padding-top: 25px;
+
+}
+
+h1{
+    color: white;
+    font-size: 22px;
+}
+nav{
+    display: flex;
+    align-items:center;
+    justify-content:flex-end;
+}
+
+.menu-item a.active{
+    background-color: rgb(55, 65, 100);
+
+
+}
+
+.menu-item{
+    color: azure;
+    padding: 2px 38px;
+    position: relative;
+    display: flex;
+}  
+.menu-item a{
+    color: inherit;
+    text-decoration: none;
+}  
+.menu-sub-title{color: white;
+
+}
+
+
+</style>

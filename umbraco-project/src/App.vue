@@ -1,19 +1,16 @@
 <template>
   <div id="app">
-<DateHeader/>
-    <NavBar />
-  <router-view />
-</div>
+    <NavBar />    
+    </div>
   
 </template>
 <script>
 import NavBar from "./components/NavBar";
-import DateHeader from "./components/DateHeader"
 
 
 export default {
   name: 'app',
-  components:{NavBar,DateHeader}
+  components:{NavBar}
   
 }
 </script>
