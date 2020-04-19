@@ -1,5 +1,5 @@
 <template>
-<header>
+<div class="header__title">
 
     <nav>
          <h1>Rastreador de Estadísticas para Entradas de Intercomunicador</h1>
@@ -9,8 +9,7 @@
        <a href="#"><vue-fontawesome icon="user" size="2" color="lightgray"></vue-fontawesome></a>
        </div>
     </nav>
-
-</header>
+  </div>
 </template>
 <script>
 import Dropdown from "./Dropdown";
@@ -71,6 +70,4 @@ nav{
 .menu-sub-title{color: white;
 
 }
-
-
 </style>
