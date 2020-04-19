@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    
     <div class="page__container">
       <AppFilter />
       <AllTicketsColumnHeaders />
