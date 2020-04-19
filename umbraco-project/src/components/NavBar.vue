@@ -22,7 +22,7 @@ export default {
         return{
             Setting:[
                 {
-                    title:'CHange Theme',
+                    title:'Change Theme',
                     link:'#'
                 },
                 {
