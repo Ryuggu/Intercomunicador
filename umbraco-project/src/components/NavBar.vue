@@ -20,7 +20,7 @@ export default {
         return{
             Setting:[
                 {
-                    title:'CHange Theme',
+                    title:'Change Theme',
                     link:'#'
                 },
                 {
@@ -69,6 +69,4 @@ nav{
 .menu-sub-title{color: white;
 
 }
-
-
 </style>
