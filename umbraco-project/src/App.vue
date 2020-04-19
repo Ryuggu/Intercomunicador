@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+<DateHeader/>
     <NavBar />
   <router-view />
 </div>
@@ -7,11 +8,12 @@
 </template>
 <script>
 import NavBar from "./components/NavBar";
+import DateHeader from "./components/DateHeader"
 
 
 export default {
   name: 'app',
-  components:{NavBar}
+  components:{NavBar,DateHeader}
   
 }
 </script>
