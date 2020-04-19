@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-
     <NavBar />
-    </div>
+  <router-view />
+</div>
   
 </template>
 <script>
@@ -17,7 +17,16 @@ export default {
 </script>
 
 <style>
-  @import './assets/style/style.css';
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+header{
+  width: 100%;
+  background-color: #1B264F;
+  padding: 15px;
 
+}
 
 </style>
