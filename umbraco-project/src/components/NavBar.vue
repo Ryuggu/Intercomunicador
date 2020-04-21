@@ -37,9 +37,9 @@ export default {
 <style scoped>
 .header__title{
     text-align: center;
-    padding-top: 25px;
+    padding-top: 20px;
     background-color: #1B264F;
-    margin-bottom: 24px;
+    margin-bottom: 15px;
 
 }
 

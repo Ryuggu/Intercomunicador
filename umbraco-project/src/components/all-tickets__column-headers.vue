@@ -1,6 +1,5 @@
 <template> 
-
-    <div class="column-headers">
+       <div class="column-headers">
         <div class="column-header blue">
             <p class="column-header__text">
                 Creation date

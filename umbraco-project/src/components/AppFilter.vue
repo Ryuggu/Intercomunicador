@@ -134,7 +134,7 @@ export default {
 }
 
 .filter__entry {
-  flex: 0 0 20%;
+  flex: 0 0 15%;
   display: flex;
   flex-direction: column;
 

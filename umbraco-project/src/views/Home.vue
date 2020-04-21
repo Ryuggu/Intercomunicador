@@ -2,6 +2,8 @@
   <div class="home">
     <div class="page__container">
       <AppFilter />
+       <MainData/>
+       <ShowHide/>
       <AllTicketsColumnHeaders />
       <AllTicketsStats />
       <TicketColumnHeaders />
@@ -17,6 +19,8 @@ import AllTicketsColumnHeaders from "@/components/all-tickets__column-headers";
 import AllTicketsStats from "@/components/all-tickets__stats";
 import TicketColumnHeaders from "@/components/ticket__column-headers";
 import TicketStats from "@/components/ticket__stats";
+import MainData from "@/components/MainData";
+import ShowHide from "@/components/ShowHide";
 
 export default {
   name: "Home",
@@ -25,7 +29,9 @@ export default {
     AllTicketsColumnHeaders,
     AllTicketsStats,
     TicketColumnHeaders,
-    TicketStats
+    TicketStats,
+    MainData,
+    ShowHide,
   }
 };
 </script>
