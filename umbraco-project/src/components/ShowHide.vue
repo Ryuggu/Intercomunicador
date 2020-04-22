@@ -7,12 +7,17 @@
   <label>
   </label>
   <button type="">❌Hide tickets</button>
-
+  
+  
 </form>
 
 </template>
 
+<script>
+       
 
+
+ </Script>
 
 <style lang="scss" scoped>
 .form-inline {  
