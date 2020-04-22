@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <div class="page__container">
-      <AppFilter />
-       <MainData/>
-       <ShowHide/>
+      <FilterBox />
+      <MainData />
+      <ShowHide />
       <AllTicketsColumnHeaders />
       <AllTicketsStats />
       <TicketColumnHeaders />
@@ -31,7 +31,7 @@ export default {
     TicketColumnHeaders,
     TicketStats,
     MainData,
-    ShowHide,
+    ShowHide
   }
 };
 </script>
