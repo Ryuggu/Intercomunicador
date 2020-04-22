@@ -1,8 +1,9 @@
 <template>
 <div class="header__title">
-    <h1>Rastreador de Estadísticas para Entradas de Intercomunicador</h1>
-        
+
     <nav>
+         <h1>Rastreador de Estadísticas para Entradas de Intercomunicador</h1>
+
    <div class="menu-item">
        <Dropdown title=""  :items="Setting" /> 
        <a href="#"><vue-fontawesome icon="user" size="2" color="lightgray"></vue-fontawesome></a>
@@ -36,9 +37,9 @@ export default {
 <style scoped>
 .header__title{
     text-align: center;
-    padding-top: 25px;
+    padding-top: 20px;
     background-color: #1B264F;
-    margin-bottom: 24px;
+    margin-bottom: 15px;
 
 }
 
