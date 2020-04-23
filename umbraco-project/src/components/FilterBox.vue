@@ -2,56 +2,61 @@
   <div class="filter">
     <div class="filter__row">
       <div class="filter__option">
-        <label class="filter__label">Datetime from</label>
+        <label class="filter__label">Starting date</label>
         <Datetime
           type="datetime"
           class="filter__input"
-          v-model="dateFrom"
+          v-model="startingDate"
           format="yyyy-MM-dd HH:mm"
         ></Datetime>
-        <!-- <div class="filter__input">2020-04-01 08:00</div> -->
       </div>
       <div class="filter__option">
-        <label class="filter__label">Datetime to</label>
-        <Datetime type="datetime" class="filter__input" v-model="dateTo" format="yyyy-MM-dd HH:mm"></Datetime>
-        <!-- <div class="filter__input">2020-04-08 22:00</div> -->
+        <label class="filter__label">Ending date</label>
+        <Datetime
+          type="datetime"
+          class="filter__input"
+          v-model="endingDate"
+          format="yyyy-MM-dd HH:mm"
+        ></Datetime>
       </div>
       <div class="filter__option">
-        <label class="filter__label">Filter tickets</label>
-        <Dropbox class="filter__input" label="Show all">
-          <li>➖ Show all</li>
-          <li>✔️ Office hours</li>
-          <li>❌ Office hours</li>
-        </Dropbox>
+        <label class="filter__label">Office hours</label>
+        <Dropbox
+          v-model="filterValue"
+          :options="filterOptions"
+          class="filter__input"
+          label="Show all"
+        />
       </div>
       <div class="filter__option">
-        <label class="filter__label">Employee search</label>
-        <Dropbox v-model="employees" class="filter__input" label="Search">
-          <li>Tyron</li>
-          <li>Shae</li>
-          <li>Renato</li>
-          <li>Andres</li>
-          <li>Edmond</li>
-          <li>Katherine</li>
-          <li>Peg</li>
-          <li>Aron</li>
-          <li>Nancy</li>
-          <li>Octavia</li>
-        </Dropbox>
+        <label class="filter__label">Employee</label>
+        <Dropbox
+          v-model="employeeValue"
+          :options="employeeOptions"
+          :searchable="true"
+          class="filter__input"
+          label="Search…"
+        />
       </div>
       <div class="filter__option">
-        <label class="filter__label">Location search</label>
-        <Dropbox class="filter__input" label="Search">
-          <li>Odense, Denmark</li>
-          <li>Sydney, Australia</li>
-          <li>New York, United States</li>
-        </Dropbox>
+        <label class="filter__label">Location</label>
+        <Dropbox
+          v-model="locationValue"
+          :options="locationOptions"
+          :searchable="true"
+          class="filter__input"
+          label="Search…"
+        />
       </div>
     </div>
     <FilterSingle v-if="compare" />
     <div class="filter__row">
       <div class="filter__option">
-        <button v-on:click="toggleCompare" class="filter__apply">Compare</button>
+        <button
+          class="filter__apply"
+          v-bind:class="{ 'filter__apply--cancel': compare }"
+          v-on:click="toggleCompare"
+        >{{ compare ? "Cancel" : "Compare"}}</button>
       </div>
       <div class="filter__option">
         <button class="filter__apply">Apply filters</button>
@@ -71,11 +76,35 @@ export default {
   },
   data() {
     return {
-      employees: ["A", "B", "C", "D", "E"],
-      dateFrom: LuxonDateTime.local()
+      filterValue: { id: 1, name: "➖ Show all" },
+      filterOptions: [
+        { id: 1, name: "➖ Show all" },
+        { id: 2, name: "✔️ Within hours" },
+        { id: 3, name: "❌ Outside hours" }
+      ],
+      employeeValue: null,
+      employeeOptions: [
+        { id: 1, name: "Tyron" },
+        { id: 2, name: "Shae" },
+        { id: 3, name: "Renato" },
+        { id: 4, name: "Andres" },
+        { id: 5, name: "Edmond" },
+        { id: 6, name: "Katherine" },
+        { id: 7, name: "Peg" },
+        { id: 8, name: "Aron" },
+        { id: 9, name: "Nancy" },
+        { id: 10, name: "Octavia" }
+      ],
+      locationValue: null,
+      locationOptions: [
+        { id: 1, name: "Odense, Denmark" },
+        { id: 2, name: "Sydney, Australia" },
+        { id: 3, name: "New York, United States" }
+      ],
+      startingDate: LuxonDateTime.local()
         .minus({ month: 1 })
         .toISO(),
-      dateTo: LuxonDateTime.local().toISO(),
+      endingDate: LuxonDateTime.local().toISO(),
       inOfficeHrs: false,
       outOfficeHrs: false,
       compare: false
@@ -96,60 +125,73 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 16px;
-}
-.filter__row {
-  display: flex;
-  justify-content: center;
 
-  &:not(:last-child) {
+  &__row {
+    display: flex;
+    justify-content: center;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-right: 32px;
+    }
+  }
+
+  &__label {
+    font-size: 32px;
+    font-weight: bold;
     margin-bottom: 16px;
-  }
-}
-.filter__option {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  &:not(:last-child) {
-    margin-right: 32px;
+    &--large {
+      font-size: 48px;
+    }
   }
-}
-.filter__label {
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 16px;
 
-  &--large {
-    font-size: 48px;
+  &__input {
+    background-color: #152235;
+    width: 240px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
+    transition: 250ms;
+
+    &:not(ul):hover {
+      background-color: lighten(#152235, 10%);
+    }
   }
-}
-.filter__input {
-  background-color: #152235;
-  width: 240px;
-  height: 60px;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
-  transition: 250ms;
 
-  &:not(ul):hover {
-    background-color: lighten(#152235, 10%);
-  }
-}
-.filter__apply {
-  background-color: #39d18c;
-  width: 240px;
-  height: 60px;
-  font-size: 32px;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
-  transition: 250ms;
+  &__apply {
+    background-color: #39d18c;
+    width: 240px;
+    height: 60px;
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
+    transition: 250ms;
+    user-select: none !important;
 
-  &:hover {
-    background-color: lighten(#39d18c, 10%);
+    &:hover {
+      background-color: lighten(#39d18c, 10%);
+    }
+
+    &--cancel {
+      background-color: #fa4657;
+      &:hover {
+        background-color: lighten(#fa4657, 10%);
+      }
+    }
   }
 }
 </style>

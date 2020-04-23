@@ -4,12 +4,26 @@
       class="dropbox__button"
       v-on:click="toggle"
       v-bind:class="{ 'dropbox__button--open': isOpen }"
-    >{{ label }}</button>
-    <ul class="dropbox__items" v-bind:class="{ open: isOpen }">
-      <!-- <input class="dropbox__search" type="text" name="" id=""> -->
-      <slot></slot>
-      <!-- <li v-for="item in items" :key="item">{{ item }}</li> -->
-    </ul>
+    >{{ value === null ? label : value.name }}</button>
+    <transition name="fade">
+      <ul class="dropbox__list" v-if="isOpen">
+        <input
+          v-if="searchable"
+          v-model="searchQuery"
+          ref="search"
+          class="dropbox__search"
+          type="text"
+          placeholder="Type to search…"
+        />
+        <slot></slot>
+        <li
+          class="dropbox__item"
+          v-for="item in searchResults"
+          :key="item.id"
+          v-on:click="select(item)"
+        >{{ item.name }}</li>
+      </ul>
+    </transition>
   </div>
 </template>
 
@@ -19,23 +33,40 @@ export default {
   data() {
     return {
       isOpen: false,
-      items: ["1", "2", "3", "4", "5"]
+      searchQuery: ""
     };
   },
   props: {
-    label: String,
-    value: Array
+    searchable: Boolean, // true: Display search input
+    label: String, // Text to display if value is null
+    options: Array, // Array of available options
+    value: Object // Currently selected option
   },
   methods: {
     toggle: function() {
       this.isOpen = !this.isOpen;
-      this.$emit("input", this.items);
+      if (this.isOpen) this.$nextTick(() => this.$refs.search.focus()); // Auto focus search input when box opens
+      this.emitValue();
     },
     hide: function() {
       this.isOpen = false;
+      this.searchQuery = "";
+      this.emitValue();
     },
-    updateValue: function(value) {
-      this.$emit("input", value);
+    select: function(item) {
+      this.isOpen = false;
+      this.value = item;
+      this.emitValue();
+    },
+    emitValue: function() {
+      this.$emit("input", this.value);
+    }
+  },
+  computed: {
+    searchResults: function() {
+      return this.options.filter(item =>
+        item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
     }
   }
 };
@@ -47,40 +78,50 @@ export default {
   flex-direction: column;
   position: relative;
   background-color: inherit;
-  color: #fff;
-}
 
-.dropbox__button {
-  background-color: inherit;
-  border: none;
-  font-weight: bold;
-  font-size: 24px;
-  cursor: pointer;
-  height: 100%;
+  &__button {
+    background-color: inherit;
+    border: none;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+    height: 100%;
+    user-select: none !important;
 
-  &::after {
-    content: " ▼";
+    &::after {
+      content: " ▼";
+    }
+    &--open::after {
+      content: " ▲";
+    }
   }
-  &--open::after {
-    content: " ▲";
+
+  &__list {
+    list-style: none;
+    text-align: left;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
   }
-}
 
-.dropbox__items {
-  display: none;
-  list-style: none;
-  text-align: left;
-  position: absolute;
-  width: 100%;
-  top: 100%;
+  &__search {
+    color: #000;
+    border: none;
+    padding: 0.5rem;
+  }
 
-  li {
+  &__item {
     padding: 0.5rem;
     font-weight: normal;
     transition: 250ms;
 
     &:nth-child(even) {
       background-color: #101f3b;
+
       &:hover {
         background-color: lighten(#101f3b, 10%);
       }
@@ -88,6 +129,7 @@ export default {
 
     &:nth-child(odd) {
       background-color: #1b254f;
+
       &:hover {
         background-color: lighten(#1b254f, 10%);
       }
@@ -95,13 +137,15 @@ export default {
   }
 }
 
-.dropbox__search {
-  color: #000;
-  border: none;
-    padding: 0.5rem;
+// Fading in and out, these are applied internally by Vue.
+// More details: https://vuejs.org/v2/guide/transitions.html
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 250ms;
 }
 
-.open {
-  display: block;
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
