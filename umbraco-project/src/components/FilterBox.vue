@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import { DateTime as LuxonDateTime } from "luxon";
 import Dropbox from "@/components/Dropbox.vue";
 import FilterSingle from "@/components/FilterSingle.vue";
@@ -114,6 +115,20 @@ export default {
     toggleCompare: function() {
       this.compare = !this.compare;
     }
+  },
+  created() {
+    axios({
+      method: "GET",
+      url: "https://api.intercom.io/admins",
+      headers: {
+        Authorization:
+          "Bearer dG9rOjJkZjI4NzI0XzE0ZWZfNDY1Ml9iMDQ3X2FjNDliOWYzZWU0NDoxOjA=",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "localhost"
+      }
+    }).then(response => {
+      this.employeeOptions = response.data.admins;
+    });
   }
 };
 </script>
