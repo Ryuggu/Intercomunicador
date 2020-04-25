@@ -1,7 +1,7 @@
 <template>
 
 <div class="menu-item" @click="isOpen =!isOpen"><a href="#">
-        {{title}}<a href="#"><vue-fontawesome icon="cog" size="2" color="lightgray"></vue-fontawesome></a> </a>
+        {{title}}<a href="#"><vue-fontawesome icon="cog" size="1.5" color="lightgray"></vue-fontawesome></a> </a>
         <transition name="fade" apper>
             
         <div class="sub-menu" v-if="isOpen">

@@ -1,59 +1,124 @@
 <template>
-<form class="form-inline" action="/action_page.php">
-
-  <input type="email" id="email"  name="email">
+ <div class="filter">
+    <div class="filter__row">
+      <div class="filter__option">
+        <Datetime
+          type="datetime"
+          class="filter__input"
+          v-model="dateFrom"
+          format="yyyy-MM-dd HH:mm"
+        ></Datetime>
+        <!-- <div class="filter__input">2020-04-01 08:00</div> -->
+      </div>
+      <div class="filter__option">
+        <Datetime type="datetime" 
+        class="filter__input" 
+        v-model="dateTo" 
+        format="yyyy-MM-dd HH:mm"></Datetime>
+        <!-- <div class="filter__input">2020-04-08 22:00</div> -->
+      </div>
+    
+        <FilterSingle v-if="compare" />
+    <div class="filter__row">
+      <div class="filter__option">
+        <button v-on:click="toggleCompare" class="filter__apply">Show Date</button>
+      </div>
+    </div>
+    </div>
+ </div>
+      
  
-  <input type="password" id="pwd"  name="pswd">
-  <label>
-  </label>
-  <button type="">❌Hide tickets</button>
-  
-  
-</form>
-
+ 
 </template>
 
 <script>
-       
+import { DateTime as LuxonDateTime } from "luxon";
+export default {
+  components: {
+  },
+  data() {
+    return {
+      
+      dateTo: LuxonDateTime.local().toISO(),
+      
+      compare: false
+    };
+  },
+  methods: {
+    toggleCompare: function() {
+      this.compare = !this.compare;
+    }
+  }
+};
+</script>
 
 
- </Script>
+<style scoped lang="scss">
 
-<style lang="scss" scoped>
-.form-inline {  
+.filter {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  margin: 15px;
+}
+.filter__row {
   display: flex;
   justify-content: center;
-    flex-flow: row wrap;
-  align-items: center;
-  margin: 1rem;
-  padding: 1rem 0rem;
-}
 
-.form-inline label {
-  margin: 5px 10px 5px 0;
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
 }
+.filter__option {
+  display: flex;
+  flex-direction: column;
+  align-items: inherit;
 
-.form-inline input {
-  vertical-align: middle;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
+  &:not(:last-child) {
+    margin-right: 32px;
+  }
+}
+.filter__label {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 16px;
+
+  &--large {
+    font-size: 48px;
+  }
+}
+.filter__input {
   background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-.form-inline button {
-  padding: 10px 20px;
-  background-color:#fff;
-  border: 1px solid #ddd;
-  color: black;
+  color:black;
+  width: 240px;
+  height: 60px;
+  font-size: 24px;
+  font-weight: bold;
   cursor: pointer;
+  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
+  transition: 250ms;
+
+  &:not(ul):hover {
+    background-color: lighten(#f9faf9, 10%);
+  }
 }
 
-.form-inline button:hover {
-  background-color: royalblue;
+
+.filter__apply {
+  background-color: #fff;
+  width: 240px;
+  color: black;
+  height: 60px;
+  font-size: 28px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
+  transition: 250ms;
+
+  &:hover {
+    background-color: lighten(#f9faf9, 10%);
+  }
 }
-
-
-
-
 </style>

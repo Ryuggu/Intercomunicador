@@ -6,7 +6,7 @@
 
    <div class="menu-item">
        <Dropdown title=""  :items="Setting" /> 
-       <a href="#"><vue-fontawesome icon="user" size="2" color="lightgray"></vue-fontawesome></a>
+       <a href="#"><vue-fontawesome icon="user" size="1.5" color="lightgray"></vue-fontawesome></a>
        </div>
     </nav>
   </div>
