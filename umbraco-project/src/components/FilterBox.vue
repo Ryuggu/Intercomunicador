@@ -116,7 +116,7 @@ export default {
       this.compare = !this.compare;
     }
   },
-  created() {
+  /*created() {
     axios({
       method: "GET",
       url: "https://api.intercom.io/admins",
@@ -127,9 +127,9 @@ export default {
         "Access-Control-Allow-Origin": "localhost"
       }
     }).then(response => {
-      this.employeeOptions = response.data.admins;
-    });
-  }
+      this.employeeOptions = response.data.admins})
+      .catch(error => console.log(error));
+  }*/
 };
 </script>
 

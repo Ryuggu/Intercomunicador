@@ -41,7 +41,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /*ticket__column-headers*/
 
 .column-headers{

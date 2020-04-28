@@ -34,7 +34,7 @@ export default {
     
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
 .header__title{
     text-align: center;
     padding-top: 20px;
