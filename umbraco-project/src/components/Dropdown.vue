@@ -30,14 +30,15 @@ export default {
 nav .menu-item .sub-menu{
     position: absolute;
     background-color:#F6EEE7;
-    padding: 25px 15px;
-    top:100%;
+    padding: 10px 0px;
+    top:111%;
     left:10%;
     inline-size: max-content;
     color:inherit;
     
 }
 nav .menu-item .sub-menu a{
+    font-size: 12px;
     color:black;
     padding:35px 5px;
     text-decoration: none;
