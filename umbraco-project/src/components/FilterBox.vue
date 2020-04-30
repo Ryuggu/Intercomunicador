@@ -56,7 +56,7 @@
           class="filter__apply"
           v-bind:class="{ 'filter__apply--cancel': compare }"
           v-on:click="toggleCompare"
-        >{{ compare ? "Cancel" : "Compare"}}</button>
+        >{{ compare ? "Cancel" : "Compare" }}</button>
       </div>
       <div class="filter__option">
         <button class="filter__apply">Apply filters</button>
@@ -119,13 +119,7 @@ export default {
   /*created() {
     axios({
       method: "GET",
-      url: "https://api.intercom.io/admins",
-      headers: {
-        Authorization:
-          "Bearer dG9rOjJkZjI4NzI0XzE0ZWZfNDY1Ml9iMDQ3X2FjNDliOWYzZWU0NDoxOjA=",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "localhost"
-      }
+      url: "http://localhost:3000/admins"
     }).then(response => {
       this.employeeOptions = response.data.admins})
       .catch(error => console.log(error));
