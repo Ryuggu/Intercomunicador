@@ -46,6 +46,9 @@ export default {
 h1{
     color: white;
     font-size: 22px;
+    text-align: center;
+    padding-right: 180px;
+    padding-bottom: 15px;
 }
 nav{
     display: flex;
