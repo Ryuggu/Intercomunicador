@@ -85,16 +85,7 @@ export default {
       ],
       employeeValue: null,
       employeeOptions: [
-        { id: 1, name: "Tyron" },
-        { id: 2, name: "Shae" },
-        { id: 3, name: "Renato" },
-        { id: 4, name: "Andres" },
-        { id: 5, name: "Edmond" },
-        { id: 6, name: "Katherine" },
-        { id: 7, name: "Peg" },
-        { id: 8, name: "Aron" },
-        { id: 9, name: "Nancy" },
-        { id: 10, name: "Octavia" }
+        { id: 1, name: "do node index.js on node-intercom if you can see this"}
       ],
       ignoredEmployeeIds: [
         25052,
