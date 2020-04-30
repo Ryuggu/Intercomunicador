@@ -96,6 +96,40 @@ export default {
         { id: 9, name: "Nancy" },
         { id: 10, name: "Octavia" }
       ],
+      ignoredEmployeeIds: [
+        25052,
+        78091,
+        90390,
+        126673,
+        445310,
+        538477,
+        681365,
+        726088,
+        764391,
+        793884,
+        888234,
+        970769,
+        1789787,
+        1878322,
+        1948149,
+        1979405,
+        2230765,
+        2270265,
+        2365674,
+        2764296,
+        2792142,
+        2796945,
+        2920088,
+        2929101,
+        3106509,
+        3162143,
+        3370938,
+        3379832,
+        3440988,
+        3643469,
+        3809597,
+        3844498
+      ],
       locationValue: null,
       locationOptions: [
         { id: 1, name: "Odense, Denmark" },
@@ -120,9 +154,17 @@ export default {
     axios({
       method: "GET",
       url: "http://localhost:3000/admins"
-    }).then(response => {
-      this.employeeOptions = response.data.admins})
-      .catch(error => console.log(error));
+    })
+      .then(response => {
+        let admins = response.data.admins;
+        let result = admins.filter(
+          employee => !this.ignoredEmployeeIds.includes(parseInt(employee.id))
+        );
+        this.employeeOptions = result;
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 };
 </script>
