@@ -26,7 +26,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
 nav .menu-item .sub-menu{
     position: absolute;
     background-color:#F6EEE7;
