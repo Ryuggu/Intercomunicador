@@ -116,14 +116,14 @@ export default {
       this.compare = !this.compare;
     }
   },
-  /*created() {
+  created() {
     axios({
       method: "GET",
       url: "http://localhost:3000/admins"
     }).then(response => {
       this.employeeOptions = response.data.admins})
       .catch(error => console.log(error));
-  }*/
+  }
 };
 </script>
 
