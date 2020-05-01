@@ -66,10 +66,9 @@
 </template>
 
 <script>
-import axios from "axios";
-import { DateTime as LuxonDateTime } from "luxon";
 import Dropbox from "@/components/Dropbox.vue";
 import FilterSingle from "@/components/FilterSingle.vue";
+
 export default {
   components: {
     Dropbox,
@@ -77,85 +76,69 @@ export default {
   },
   data() {
     return {
-      filterValue: { id: 1, name: "➖ Show all" },
-      filterOptions: [
-        { id: 1, name: "➖ Show all" },
-        { id: 2, name: "✔️ Within hours" },
-        { id: 3, name: "❌ Outside hours" }
-      ],
-      employeeValue: null,
-      employeeOptions: [
-        { id: 1, name: "do node index.js on node-intercom if you can see this"}
-      ],
-      ignoredEmployeeIds: [
-        25052,
-        78091,
-        90390,
-        126673,
-        445310,
-        538477,
-        681365,
-        726088,
-        764391,
-        793884,
-        888234,
-        970769,
-        1789787,
-        1878322,
-        1948149,
-        1979405,
-        2230765,
-        2270265,
-        2365674,
-        2764296,
-        2792142,
-        2796945,
-        2920088,
-        2929101,
-        3106509,
-        3162143,
-        3370938,
-        3379832,
-        3440988,
-        3643469,
-        3809597,
-        3844498
-      ],
-      locationValue: null,
-      locationOptions: [
-        { id: 1, name: "Odense, Denmark" },
-        { id: 2, name: "Sydney, Australia" },
-        { id: 3, name: "New York, United States" }
-      ],
-      startingDate: LuxonDateTime.local()
-        .minus({ month: 1 })
-        .toISO(),
-      endingDate: LuxonDateTime.local().toISO(),
       inOfficeHrs: false,
       outOfficeHrs: false,
       compare: false
     };
   },
   methods: {
-    toggleCompare: function() {
+    toggleCompare() {
       this.compare = !this.compare;
     }
   },
+  computed: {
+    startingDate: {
+      get() {
+        return this.$store.state.startingDate;
+      },
+      set(newDate) {
+        this.$store.commit("setStartingDate", newDate);
+      }
+    },
+    endingDate: {
+      get() {
+        return this.$store.state.endingDate;
+      },
+      set(newDate) {
+        this.$store.commit("setEndingDate", newDate);
+      }
+    },
+    filterValue: {
+      get() {
+        return this.$store.state.filterValue;
+      },
+      set(filterValue) {
+        this.$store.commit("setFilterValue", filterValue);
+      }
+    },
+    filterOptions() {
+      return this.$store.state.filterOptions;
+    },
+    employeeValue: {
+      get() {
+        return this.$store.state.employeeValue;
+      },
+      set(employee) {
+        this.$store.commit("setEmployeeValue", employee);
+      }
+    },
+    employeeOptions() {
+      return this.$store.state.employeeOptions;
+    },
+    locationValue: {
+      get() {
+        return this.$store.state.locationValue;
+      },
+      set(location) {
+        this.$store.commit("setLocationValue", location);
+      }
+    },
+    locationOptions() {
+      return this.$store.state.locationOptions;
+    }
+  },
   created() {
-    axios({
-      method: "GET",
-      url: "http://localhost:3000/admins"
-    })
-      .then(response => {
-        let admins = response.data.admins;
-        let result = admins.filter(
-          employee => !this.ignoredEmployeeIds.includes(parseInt(employee.id))
-        );
-        this.employeeOptions = result;
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.$store.dispatch("fetchEmployees");
   }
 };
 </script>
