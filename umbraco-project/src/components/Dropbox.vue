@@ -33,7 +33,8 @@ export default {
   data() {
     return {
       isOpen: false,
-      searchQuery: ""
+      searchQuery: "",
+      employee: this.value
     };
   },
   props: {
@@ -43,29 +44,29 @@ export default {
     value: Object // Currently selected option
   },
   methods: {
-    toggle: function() {
+    toggle() {
       this.isOpen = !this.isOpen;
       if (this.isOpen && this.searchable) {
         this.$nextTick(() => this.$refs.search.focus()); // Auto focus search input when box opens
       }
       this.emitValue();
     },
-    hide: function() {
+    hide() {
       this.isOpen = false;
       this.searchQuery = "";
       this.emitValue();
     },
-    select: function(item) {
+    select(item) {
       this.isOpen = false;
-      this.value = item;
+      this.employee = item;
       this.emitValue();
     },
-    emitValue: function() {
-      this.$emit("input", this.value);
+    emitValue() {
+      this.$emit("input", this.employee);
     }
   },
   computed: {
-    searchResults: function() {
+    searchResults() {
       return this.options.filter(item =>
         item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
