@@ -45,7 +45,9 @@ export default {
   methods: {
     toggle: function() {
       this.isOpen = !this.isOpen;
-      if (this.isOpen) this.$nextTick(() => this.$refs.search.focus()); // Auto focus search input when box opens
+      if (this.isOpen && this.searchable) {
+        this.$nextTick(() => this.$refs.search.focus()); // Auto focus search input when box opens
+      }
       this.emitValue();
     },
     hide: function() {
