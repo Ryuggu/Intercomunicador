@@ -68,6 +68,7 @@
 <script>
 import Dropbox from "@/components/Dropbox.vue";
 import FilterSingle from "@/components/FilterSingle.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -76,58 +77,6 @@ export default {
   },
   data() {
     return {
-      filterValue: { id: 1, name: "➖ Show all" },
-      filterOptions: [
-        { id: 1, name: "➖ Show all" },
-        { id: 2, name: "✔️ Within hours" },
-        { id: 3, name: "❌ Outside hours" }
-      ],
-      employeeValue: null,
-      employeeOptions: [
-        { id: 1, name: "do node index.js on node-intercom if you see this"}
-      ],
-      ignoredEmployeeIds: [
-        25052,
-        78091,
-        90390,
-        126673,
-        445310,
-        538477,
-        681365,
-        726088,
-        764391,
-        793884,
-        888234,
-        970769,
-        1789787,
-        1878322,
-        1948149,
-        1979405,
-        2230765,
-        2270265,
-        2365674,
-        2764296,
-        2792142,
-        2796945,
-        2920088,
-        2929101,
-        3106509,
-        3162143,
-        3370938,
-        3379832,
-        3440988,
-        3643469,
-        3809597,
-        3844498
-      ],
-      locationValue: null,
-      locationOptions: [
-        { id: 1, name: "do node index.js on node-intercom if you see this"}
-      ],
-      startingDate: LuxonDateTime.local()
-        .minus({ month: 1 })
-        .toISO(),
-      endingDate: LuxonDateTime.local().toISO(),
       inOfficeHrs: false,
       outOfficeHrs: false,
       compare: false
@@ -191,26 +140,9 @@ export default {
   },
   created() {
     this.$store.dispatch("fetchEmployees");
-  
 
-    /*Employee list GET request*/
+    /*Location list GET request*/
     axios({
-      method: "GET",
-      url: "http://localhost:3000/admins"
-    })
-      .then(response => {
-        let admins = response.data.admins;
-        let result = admins.filter(
-          employee => !this.ignoredEmployeeIds.includes(parseInt(employee.id))
-        );
-        this.employeeOptions = result;
-      })
-      .catch(error => {
-        console.log(error);
-      });
-
-      /*Location list GET request*/
-      axios({
       method: "GET",
       url: "http://localhost:3000/contacts"
     })
@@ -218,17 +150,16 @@ export default {
         let contacts = response.data.data;
 
         contacts.forEach(element => {
-          console.log(element.location.country)
+          console.log(element.location.country);
         });
 
         /*this.locationOptions = result;*/
-
       })
       .catch(error => {
         console.log(error);
       });
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
