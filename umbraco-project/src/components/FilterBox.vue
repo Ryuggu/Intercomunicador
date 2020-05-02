@@ -76,8 +76,6 @@ export default {
   },
   data() {
     return {
-<<<<<<< HEAD
-=======
       filterValue: { id: 1, name: "➖ Show all" },
       filterOptions: [
         { id: 1, name: "➖ Show all" },
@@ -130,7 +128,6 @@ export default {
         .minus({ month: 1 })
         .toISO(),
       endingDate: LuxonDateTime.local().toISO(),
->>>>>>> e411a232a68921eb5241dd1689ff3fc5afa3c98a
       inOfficeHrs: false,
       outOfficeHrs: false,
       compare: false
@@ -193,10 +190,8 @@ export default {
     }
   },
   created() {
-<<<<<<< HEAD
     this.$store.dispatch("fetchEmployees");
-  }
-=======
+  
 
     /*Employee list GET request*/
     axios({
@@ -232,10 +227,8 @@ export default {
       .catch(error => {
         console.log(error);
       });
-  },
-  
->>>>>>> e411a232a68921eb5241dd1689ff3fc5afa3c98a
-};
+  }
+}
 </script>
 
 <style scoped lang="scss">
