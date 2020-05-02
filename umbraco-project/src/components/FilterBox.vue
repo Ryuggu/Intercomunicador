@@ -85,7 +85,7 @@ export default {
       ],
       employeeValue: null,
       employeeOptions: [
-        { id: 1, name: "do node index.js on node-intercom if you can see this"}
+        { id: 1, name: "do node index.js on node-intercom if you see this"}
       ],
       ignoredEmployeeIds: [
         25052,
@@ -123,9 +123,7 @@ export default {
       ],
       locationValue: null,
       locationOptions: [
-        { id: 1, name: "Odense, Denmark" },
-        { id: 2, name: "Sydney, Australia" },
-        { id: 3, name: "New York, United States" }
+        { id: 1, name: "do node index.js on node-intercom if you see this"}
       ],
       startingDate: LuxonDateTime.local()
         .minus({ month: 1 })
@@ -142,6 +140,8 @@ export default {
     }
   },
   created() {
+
+    /*Employee list GET request*/
     axios({
       method: "GET",
       url: "http://localhost:3000/admins"
@@ -156,7 +156,27 @@ export default {
       .catch(error => {
         console.log(error);
       });
-  }
+
+      /*Location list GET request*/
+      axios({
+      method: "GET",
+      url: "http://localhost:3000/contacts"
+    })
+      .then(response => {
+        let contacts = response.data.data;
+
+        contacts.forEach(element => {
+          console.log(element.location.country)
+        });
+
+        /*this.locationOptions = result;*/
+
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  },
+  
 };
 </script>
 
