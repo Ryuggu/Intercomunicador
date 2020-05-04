@@ -34,6 +34,7 @@
           v-model="employeeValue"
           :options="employeeOptions"
           :searchable="true"
+          :nullable="true"
           class="filter__input"
           label="Search…"
         />
@@ -44,6 +45,7 @@
           v-model="locationValue"
           :options="locationOptions"
           :searchable="true"
+          :nullable="true"
           class="filter__input"
           label="Search…"
         />
@@ -209,7 +211,7 @@ export default {
     box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
     transition: 250ms;
 
-    &:not(ul):hover {
+    &:hover {
       background-color: lighten(#152235, 10%);
     }
   }
