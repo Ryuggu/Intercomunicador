@@ -107,8 +107,23 @@ export default new Vuex.Store({
       }).catch(error => {
         console.log(error);
       });
-    }
-  },
+    },
 
-  modules: {}
-});
+
+// GET country name
+    fetchLocations() {
+      axios.get("http://localhost:3000/contacts")
+      .then(response => {
+        let contacts = response.data.data;
+        contacts.forEach(element => {
+            console.log(element.location.country);
+          });
+
+          this.locationOptions = contacts;
+      })
+
+      .catch(error => {
+        console.log(error);
+      });
+    }
+  }})

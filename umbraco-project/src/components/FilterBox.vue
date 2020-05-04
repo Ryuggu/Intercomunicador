@@ -70,7 +70,6 @@
 <script>
 import Dropbox from "@/components/Dropbox.vue";
 import FilterSingle from "@/components/FilterSingle.vue";
-import axios from "axios";
 
 export default {
   components: {
@@ -142,24 +141,7 @@ export default {
   },
   created() {
     this.$store.dispatch("fetchEmployees");
-
-    /*Location list GET request*/
-    axios({
-      method: "GET",
-      url: "http://localhost:3000/contacts"
-    })
-      .then(response => {
-        let contacts = response.data.data;
-
-        contacts.forEach(element => {
-          console.log(element.location.country);
-        });
-
-        /*this.locationOptions = result;*/
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.$store.dispatch("fetchLocations");
   }
 };
 </script>
