@@ -1,6 +1,5 @@
 <template>
-  <div class="dropbox"           v-on:keyup.esc="hide"
-v-click-outside="hide">
+  <div class="dropbox" v-on:keyup.esc="hide" v-click-outside="hide">
     <button
       class="dropbox__button"
       v-on:click="toggle"
@@ -50,7 +49,7 @@ export default {
     searchable: Boolean, // true: Display search input
     label: String, // Text to display if value is null
     options: Array, // Array of available options
-    value: Object, // Currently selected option
+    value: Object, // Currently/default selected option
     nullable: Boolean // true: Dropbox can have a null value
   },
   methods: {
