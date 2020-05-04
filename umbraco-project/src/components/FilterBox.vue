@@ -66,10 +66,10 @@
 </template>
 
 <script>
-import axios from "axios";
-import { DateTime as LuxonDateTime } from "luxon";
 import Dropbox from "@/components/Dropbox.vue";
 import FilterSingle from "@/components/FilterSingle.vue";
+import axios from "axios";
+
 export default {
   components: {
     Dropbox,
@@ -146,21 +146,77 @@ export default {
     };
   },
   methods: {
-    toggleCompare: function() {
+    toggleCompare() {
       this.compare = !this.compare;
     }
   },
+  computed: {
+    startingDate: {
+      get() {
+        return this.$store.state.startingDate;
+      },
+      set(newDate) {
+        this.$store.commit("setStartingDate", newDate);
+      }
+    },
+    endingDate: {
+      get() {
+        return this.$store.state.endingDate;
+      },
+      set(newDate) {
+        this.$store.commit("setEndingDate", newDate);
+      }
+    },
+    filterValue: {
+      get() {
+        return this.$store.state.filterValue;
+      },
+      set(filterValue) {
+        this.$store.commit("setFilterValue", filterValue);
+      }
+    },
+    filterOptions() {
+      return this.$store.state.filterOptions;
+    },
+    employeeValue: {
+      get() {
+        return this.$store.state.employeeValue;
+      },
+      set(employee) {
+        this.$store.commit("setEmployeeValue", employee);
+      }
+    },
+    employeeOptions() {
+      return this.$store.state.employeeOptions;
+    },
+    locationValue: {
+      get() {
+        return this.$store.state.locationValue;
+      },
+      set(location) {
+        this.$store.commit("setLocationValue", location);
+      }
+    },
+    locationOptions() {
+      return this.$store.state.locationOptions;
+    }
+  },
   created() {
+    this.$store.dispatch("fetchEmployees");
+
+    /*Location list GET request*/
     axios({
       method: "GET",
-      url: "http://localhost:3000/admins"
+      url: "http://localhost:3000/contacts"
     })
       .then(response => {
-        let admins = response.data.admins;
-        let result = admins.filter(
-          employee => !this.ignoredEmployeeIds.includes(parseInt(employee.id))
-        );
-        this.employeeOptions = result;
+        let contacts = response.data.data;
+
+        contacts.forEach(element => {
+          console.log(element.location.country);
+        });
+
+        /*this.locationOptions = result;*/
       })
       .catch(error => {
         console.log(error);
