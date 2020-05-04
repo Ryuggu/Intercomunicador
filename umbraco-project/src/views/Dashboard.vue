@@ -1,14 +1,16 @@
-<template v-if="!isLoading">
+<template>
   <div class="home">
-    <div class="page__container">
-      <FilterBox />
-      <MainData />
-      <ShowHide />
-      <AllTicketsColumnHeaders />
-      <AllTicketsStats />
-      <TicketColumnHeaders />
-      <TicketStats />
-    </div>
+    <template v-if="!isLoading">
+      <div class="page__container">
+        <FilterBox />
+        <MainData />
+        <ShowHide />
+        <AllTicketsColumnHeaders />
+        <AllTicketsStats />
+        <TicketColumnHeaders />
+        <TicketStats />
+      </div>
+    </template>
   </div>
 </template>
 
@@ -32,23 +34,13 @@ export default {
     TicketStats,
     MainData,
     ShowHide
-  }
-};
-export default {
-  components: { EventCard },
-  data() {
-    return {
-      isLoading: true,
-      events: []
-    };
   },
   created() {
-    axios.get("//localhost:3000/home").then(({ data }) => {
+    axios.get("//localhost:5000/home").then(({ data }) => {
       this.home = data.home.home;
       this.isLoading = false;
     });
   }
 };
-
 </script>
 

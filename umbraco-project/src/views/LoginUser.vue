@@ -30,7 +30,7 @@ export default {
           password: this.password
         })
         .then(() => {
-          this.$router.push({ name: "home" });
+          this.$router.push({ name: "dashboard" });
         })
         .catch(err => {
           this.error = err.response.data.error;
@@ -58,6 +58,8 @@ export default {
 
 .form-inline label {
   margin: 5px 10px 5px 0;
+    color: black;
+
 }
 
 .form-inline input {
@@ -66,6 +68,7 @@ export default {
   padding: 10px;
   background-color: #fff;
   border: 1px solid #ddd;
+  color: black;
 }
 
 .form-inline button {

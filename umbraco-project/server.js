@@ -3,26 +3,28 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
-const events = require("./db/events.json");
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.json({
-    message: "Welcome to the API."
-  });
-});
+app.get("/home", (req, res) => {
+  res.send('home')
 
-app.get("/home", verifyToken, (req, res) => {
+  })
+
+
+
+app.get("/dashboard", verifyToken, (req, res) => {
   jwt.verify(req.token, "the_secret_key", err => {
     if (err) {
       res.sendStatus(401);
     } else {
-      res.json({
-        events: events
+      res.send('dashboard')
+
+      ({
+        
       });
     }
   });
@@ -95,7 +97,9 @@ function verifyToken(req, res, next) {
 
   if (typeof bearerHeader !== "undefined") {
     const bearer = bearerHeader.split(" ");
+    //Get token from array
     const bearerToken = bearer[1];
+    //Set the token
     req.token = bearerToken;
     next();
   } else {
@@ -103,6 +107,6 @@ function verifyToken(req, res, next) {
   }
 }
 
-app.listen(3000, () => {
-  console.log("Server started on port 3000");
+app.listen(5000, () => {
+  console.log("Server started on port 5000");
 });

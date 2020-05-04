@@ -56,7 +56,7 @@ h1 {
   color: white;
   font-size: 22px;
   text-align: center;
-  padding-right: 180px;
+  padding-right: 150px;
   padding-bottom: 15px;
   text-decoration: none;
 }
