@@ -35,7 +35,9 @@ app.get("/admins/:id", (request, response) => {
 
 // List all conversations
 app.get("/conversations", (_request, response) => {
-    client.conversations.list().then(data => {
+    client.conversations.list({
+        "per_page": 60 // Max of 60 conversations can be fetched per request
+    }).then(data => {
         response.json(data.body);
     }).catch(error => {
         response.json(error.body);
