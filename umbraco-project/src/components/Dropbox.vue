@@ -83,9 +83,12 @@ export default {
   computed: {
     searchResults() {
       //Filter available options based on search query
-      return this.options.filter(item =>
-        item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
+      return this.options
+        .filter(item =>
+          item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+        )
+        // Do not display selected item in list
+        .filter(item => item !== this.value);
     }
   }
 };
