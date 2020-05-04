@@ -38,11 +38,24 @@ app.get("/conversations", (_request, response) => {
     client.conversations.list({
         "per_page": 60 // Max of 60 conversations can be fetched per request
     }).then(data => {
-        response.json(data.body);
+        let conversations = data.body.conversations;
+        nextConversations(conversations, data, response);
     }).catch(error => {
         response.json(error.body);
     });
 });
+
+// Recursively get all conversations into one response
+function nextConversations(conversations, data, response) {
+    client.nextPage(data.body.pages).then(data => {
+        conversations.push(...data.body.conversations);
+        if (data.body.pages.page >= data.body.pages.total_pages) {
+            response.json(conversations);
+        } else {
+            nextConversations(conversations, data, response);
+        }
+    });
+}
 
 // Find conversation by ID
 app.get("/conversations/:id", (request, response) => {

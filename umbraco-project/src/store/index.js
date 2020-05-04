@@ -109,21 +109,29 @@ export default new Vuex.Store({
       });
     },
 
-
-// GET country name
+    // GET country name
     fetchLocations() {
       axios.get("http://localhost:3000/contacts")
-      .then(response => {
-        let contacts = response.data.data;
-        contacts.forEach(element => {
+        .then(response => {
+          let contacts = response.data.data;
+          contacts.forEach(element => {
             console.log(element.location.country);
           });
 
           this.locationOptions = contacts;
-      })
+        })
 
-      .catch(error => {
-        console.log(error);
-      });
+        .catch(error => {
+          console.log(error);
+        });
+    },
+
+    // Get tickets
+    fetchConversations() {
+      axios.get("http://localhost:3000/conversations").then(response => {
+        let conversations = response.data;
+        console.log(conversations);
+      })
     }
-  }})
+  }
+})
