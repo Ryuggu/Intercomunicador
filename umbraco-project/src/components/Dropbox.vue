@@ -8,7 +8,7 @@
     <!-- Vue.js transition fades the items in and out when dropbox is opened -->
     <transition name="fade">
       <ul class="dropbox__list" v-if="isOpen">
-        <!-- Render deselect option is dropbox is nullable and there's a selected item -->
+        <!-- Render deselect option if dropbox is nullable and there's a selected item -->
         <div
           v-if="nullable && value"
           class="dropbox__selection"
@@ -83,12 +83,14 @@ export default {
   computed: {
     searchResults() {
       //Filter available options based on search query
-      return this.options
-        .filter(item =>
-          item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-        )
-        // Do not display selected item in list
-        .filter(item => item !== this.value);
+      return (
+        this.options
+          .filter(item =>
+            item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+          )
+          // Do not display selected item in list if dropbox is nullable
+          .filter(item => (this.nullable ? item !== this.value : true))
+      );
     }
   }
 };
