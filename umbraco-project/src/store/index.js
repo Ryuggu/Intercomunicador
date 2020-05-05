@@ -64,11 +64,16 @@ export default new Vuex.Store({
       3643469,
       3809597,
       3844498
-    ]
+    ],
+
+    // Main data
+    conversations: []
   },
 
   // MUTATIONS
   mutations: {
+
+    // Filter data
     setStartingDate(state, date) {
       state.startingDate = date;
     },
@@ -92,6 +97,11 @@ export default new Vuex.Store({
     },
     setLocationOptions(state, locationOptions) {
       state.locationOptions = locationOptions;
+    },
+
+    // Main data
+    setConversations(state, conversations) {
+      state.conversations = conversations;
     }
   },
 
@@ -127,11 +137,13 @@ export default new Vuex.Store({
     },
 
     // Get tickets
-    fetchConversations() {
+    fetchConversations(context) {
       axios.get("http://localhost:3000/conversations").then(response => {
         let conversations = response.data;
-        console.log(conversations);
-      })
+        context.commit("setConversations", conversations);
+      }).catch(error => {
+        console.log(error);
+      });
     }
   }
 })
