@@ -35,26 +35,37 @@ app.get("/admins/:id", (request, response) => {
 
 // List all conversations
 app.get("/conversations", (_request, response) => {
-    client.conversations.list({
-        "per_page": 60 // Max of 60 conversations can be fetched per request
-    }).then(data => {
-        let conversations = data.body.conversations;
-        nextConversations(conversations, data, response);
+    client.conversations.list().then(data => {
+        nextConversations(data, response);
     }).catch(error => {
         response.json(error.body);
     });
 });
 
-// Recursively get all conversations into one response
-function nextConversations(conversations, data, response) {
-    client.nextPage(data.body.pages).then(data => {
-        conversations.push(...data.body.conversations);
-        if (data.body.pages.page >= data.body.pages.total_pages) {
-            response.json(conversations);
-        } else {
-            nextConversations(conversations, data, response);
-        }
+// Fetch all the remaining conversation pages
+function nextConversations(data, response) {
+    Promise.all(nextPages(data)).then(pages => {
+        pages.forEach(page => {
+            data.body.conversations.push(...page.body.conversations);
+        });
+        response.json(data.body.conversations);
     });
+}
+
+// Returns a list of promises for fetching each of the remaining pages
+function nextPages(data) {
+    let pages = data.body.pages;
+    let pageObjs = [];
+    for (let index = pages.page; index < pages.total_pages; index++) {
+        pageObjs.push(client.nextPage({
+            type: "pages",
+            next: `https://api.intercom.io/conversations?per_page=${pages.per_page}&page=${index + 1}`,
+            page: index,
+            per_page: pages.per_page,
+            total_pages: pages.total_pages
+        }));
+    }
+    return pageObjs;
 }
 
 // Find conversation by ID
