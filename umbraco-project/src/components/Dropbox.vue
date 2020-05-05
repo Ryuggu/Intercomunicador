@@ -12,7 +12,7 @@
         <div
           v-if="nullable && value"
           class="dropbox__selection"
-          v-on:click="deselect"
+          v-on:click="select(null)"
         >{{ value.name }}</div>
         <!-- Search input renders only if searchable prop is true -->
         <input
@@ -67,14 +67,8 @@ export default {
       this.emitValue();
     },
     select(item) {
-      this.isOpen = false;
       this.employee = item;
-      this.emitValue();
-    },
-    deselect() {
-      this.isOpen = false;
-      this.employee = null;
-      this.emitValue();
+      this.hide();
     },
     emitValue() {
       this.$emit("input", this.employee);
