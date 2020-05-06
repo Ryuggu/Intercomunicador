@@ -53,9 +53,10 @@ export default {
     display: flex; 
     flex: 2;
     font-weight: 700;
-    height: 48px;
-    margin-right: 8px;
-    margin-top: 8px;
+    font-size: 2.5rem;
+    height: 3rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
     box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
     background-color: white;
 }
@@ -73,7 +74,7 @@ export default {
 }
 
 .ticket-table__data {
-    margin: auto 20px; /* centers the text in the div + the display: flex on the parent */ 
+    margin: auto 1.25rem; /* centers the text in the div + the display: flex on the parent */ 
     color: black;
     font-weight: 400;
 

@@ -51,9 +51,10 @@ export default {
     display: flex; 
     flex: 2;
     font-weight: 700;
-    height: 80px;
-    margin-right: 8px;
-    margin-top: 20px;
+    font-size: 2.1rem;
+    height: 5rem;
+    margin-right: 0.5rem;
+    margin-top: 1.25rem;
     box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
 }
 
@@ -66,6 +67,6 @@ export default {
 }
 
 .column-header__text {
-    margin: auto 20px; /* centers the text in the div + the display: flex on the parent */ 
+    margin: auto 1.25rem; /* centers the text in the div + the display: flex on the parent */ 
 }
 </style>

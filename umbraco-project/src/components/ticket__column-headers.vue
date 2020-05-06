@@ -53,6 +53,7 @@ export default {
     display: flex; 
     flex: 1;
     font-weight: 700;
+    font-size: 2.1rem;
     height: 48px;
     margin-right: 8px;
     margin-top: 20px;

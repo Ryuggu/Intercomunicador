@@ -20,12 +20,12 @@
         background-color:#fff;
         color: black;
         box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
-        padding: 15px 32px;
+        padding: 1rem 2rem;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
-        margin: 10px;}
+        font-size: 2rem;
+        margin: 1rem;}
 
         
   input[type=button], select {

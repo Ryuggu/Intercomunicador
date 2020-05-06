@@ -45,15 +45,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
-  height: 30%;
-  padding: 50px;
+  width: 50rem;
+  height: 30rem;
+  padding: 3rem;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;
-  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
   border: 1px solid black;
+  box-shadow: 0rem 0rem 1.2rem 0rem black; 
   box-sizing: border-box;
+    font-size: 2rem;
+
 }
 
 .form-inline label {

@@ -4,7 +4,7 @@
       <h1>Rastreador de Estadísticas para Entradas de Intercomunicador</h1>
       <div class="menu-item">
         <router-link v-if="!loggedIn" to="/login" class="button">
-          <vue-fontawesome icon="user" size="1.5" color="lightgray"></vue-fontawesome>
+          <vue-fontawesome icon="user" size="2.5" color="lightgray"></vue-fontawesome>
         </router-link>
         <Dropdown title :items="Setting" />
       </div>
@@ -47,17 +47,16 @@ export default {
 <style scoped lang="scss">
 .header__title {
   text-align: center;
-  padding-top: 20px;
+ 	padding: 0.25rem;
   background-color: #1b264f;
-  margin-bottom: 15px;
 }
 
 h1 {
   color: white;
-  font-size: 22px;
+  font-size: 2.4rem;
   text-align: center;
-  padding-right: 150px;
-  padding-bottom: 15px;
+  padding: 1rem 18rem;
+ 
   text-decoration: none;
 }
 nav {
@@ -72,7 +71,7 @@ nav {
 
 .menu-item {
   color: azure;
-  padding: 2px 38px;
+  padding: 0rem 2rem;
   position: relative;
   display: flex;
 }

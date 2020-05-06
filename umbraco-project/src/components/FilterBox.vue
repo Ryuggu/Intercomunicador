@@ -77,69 +77,6 @@ export default {
   },
   data() {
     return {
-      filterValue: { id: 1, name: "➖ Show all" },
-      filterOptions: [
-        { id: 1, name: "➖ Show all" },
-        { id: 2, name: "✔️ Within hours" },
-        { id: 3, name: "❌ Outside hours" }
-      ],
-      employeeValue: null,
-      employeeOptions: [
-        { id: 1, name: "Tyron" },
-        { id: 2, name: "Shae" },
-        { id: 3, name: "Renato" },
-        { id: 4, name: "Andres" },
-        { id: 5, name: "Edmond" },
-        { id: 6, name: "Katherine" },
-        { id: 7, name: "Peg" },
-        { id: 8, name: "Aron" },
-        { id: 9, name: "Nancy" },
-        { id: 10, name: "Octavia" }
-      ],
-      ignoredEmployeeIds: [
-        25052,
-        78091,
-        90390,
-        126673,
-        445310,
-        538477,
-        681365,
-        726088,
-        764391,
-        793884,
-        888234,
-        970769,
-        1789787,
-        1878322,
-        1948149,
-        1979405,
-        2230765,
-        2270265,
-        2365674,
-        2764296,
-        2792142,
-        2796945,
-        2920088,
-        2929101,
-        3106509,
-        3162143,
-        3370938,
-        3379832,
-        3440988,
-        3643469,
-        3809597,
-        3844498
-      ],
-      locationValue: null,
-      locationOptions: [
-        { id: 1, name: "Odense, Denmark" },
-        { id: 2, name: "Sydney, Australia" },
-        { id: 3, name: "New York, United States" }
-      ],
-      startingDate: LuxonDateTime.local()
-        .minus({ month: 1 })
-        .toISO(),
-      endingDate: LuxonDateTime.local().toISO(),
       inOfficeHrs: false,
       outOfficeHrs: false,
       compare: false
@@ -228,17 +165,17 @@ export default {
 <style scoped lang="scss">
 .filter {
   background-color: #00f;
-  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
+  box-shadow:  0.1875rem  0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 1rem;
 
   &__row {
     display: flex;
     justify-content: center;
 
     &:not(:last-child) {
-      margin-bottom: 16px;
+      margin-bottom: 1rem;
     }
   }
 
@@ -248,26 +185,23 @@ export default {
     align-items: center;
 
     &:not(:last-child) {
-      margin-right: 32px;
+      margin-right: 2rem;
     }
   }
 
   &__label {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 16px;
-
+    font-size: 2rem;
+    margin-bottom: 1rem;
     &--large {
-      font-size: 48px;
+      font-size: 2rem;
     }
   }
 
   &__input {
     background-color: #152235;
-    width: 240px;
-    height: 60px;
-    font-size: 24px;
-    font-weight: bold;
+    width: 13rem;
+    height: 3.75rem;
+    font-size: 2rem;
     cursor: pointer;
     box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
     transition: 250ms;
@@ -279,9 +213,9 @@ export default {
 
   &__apply {
     background-color: #39d18c;
-    width: 240px;
-    height: 60px;
-    font-size: 32px;
+    width: 13rem;
+    height: 3.75rem;
+    font-size: 2rem;
     font-weight: bold;
     border: none;
     cursor: pointer;
