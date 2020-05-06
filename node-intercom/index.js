@@ -36,11 +36,37 @@ app.get("/admins/:id", (request, response) => {
 // List all conversations
 app.get("/conversations", (_request, response) => {
     client.conversations.list().then(data => {
-        response.json(data.body);
+        nextConversations(data, response);
     }).catch(error => {
         response.json(error.body);
     });
 });
+
+// Fetch all the remaining conversation pages
+function nextConversations(data, response) {
+    Promise.all(nextPages(data)).then(pages => {
+        pages.forEach(page => {
+            data.body.conversations.push(...page.body.conversations);
+        });
+        response.json(data.body.conversations);
+    });
+}
+
+// Returns a list of promises for fetching each of the remaining pages
+function nextPages(data) {
+    let pages = data.body.pages;
+    let pageObjs = [];
+    for (let index = pages.page; index < pages.total_pages; index++) {
+        pageObjs.push(client.nextPage({
+            type: "pages",
+            next: `https://api.intercom.io/conversations?per_page=${pages.per_page}&page=${index + 1}`,
+            page: index,
+            per_page: pages.per_page,
+            total_pages: pages.total_pages
+        }));
+    }
+    return pageObjs;
+}
 
 // Find conversation by ID
 app.get("/conversations/:id", (request, response) => {

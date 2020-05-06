@@ -1,12 +1,20 @@
 <template>
-  <div class="dropbox" v-click-outside="hide">
+  <div class="dropbox" v-on:keyup.esc="hide" v-click-outside="hide">
     <button
       class="dropbox__button"
       v-on:click="toggle"
       v-bind:class="{ 'dropbox__button--open': isOpen }"
     >{{ value === null ? label : value.name }}</button>
+    <!-- Vue.js transition fades the items in and out when dropbox is opened -->
     <transition name="fade">
       <ul class="dropbox__list" v-if="isOpen">
+        <!-- Render deselect option if dropbox is nullable and there's a selected item -->
+        <div
+          v-if="nullable && value"
+          class="dropbox__selection"
+          v-on:click="select(null)"
+        >{{ value.name }}</div>
+        <!-- Search input renders only if searchable prop is true -->
         <input
           v-if="searchable"
           v-model="searchQuery"
@@ -15,7 +23,7 @@
           type="text"
           placeholder="Type to search…"
         />
-        <slot></slot>
+        <!-- Render dropbox items -->
         <li
           class="dropbox__item"
           v-for="item in searchResults"
@@ -41,13 +49,15 @@ export default {
     searchable: Boolean, // true: Display search input
     label: String, // Text to display if value is null
     options: Array, // Array of available options
-    value: Object // Currently selected option
+    value: Object, // Currently/default selected option
+    nullable: Boolean // true: Dropbox can have a null value
   },
   methods: {
     toggle() {
       this.isOpen = !this.isOpen;
       if (this.isOpen && this.searchable) {
-        this.$nextTick(() => this.$refs.search.focus()); // Auto focus search input when box opens
+        // Auto focus search input when box opens
+        this.$nextTick(() => this.$refs.search.focus());
       }
       this.emitValue();
     },
@@ -57,9 +67,8 @@ export default {
       this.emitValue();
     },
     select(item) {
-      this.isOpen = false;
       this.employee = item;
-      this.emitValue();
+      this.hide();
     },
     emitValue() {
       this.$emit("input", this.employee);
@@ -67,8 +76,14 @@ export default {
   },
   computed: {
     searchResults() {
-      return this.options.filter(item =>
-        item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      //Filter available options based on search query
+      return (
+        this.options
+          .filter(item =>
+            item.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+          )
+          // Do not display selected item in list if dropbox is nullable
+          .filter(item => (this.nullable ? item !== this.value : true))
       );
     }
   }
@@ -115,6 +130,21 @@ export default {
     color: #000;
     border: none;
     padding: 0.5rem;
+  }
+
+  &__selection {
+    background-color: #1b254f;
+    padding: 0.5rem;
+    font-weight: normal;
+    transition: 250ms;
+
+    &:hover {
+      background-color: lighten(#1b254f, 10%);
+    }
+
+    &::after {
+      content: " ❌";
+    }
   }
 
   &__item {

@@ -34,6 +34,7 @@
           v-model="employeeValue"
           :options="employeeOptions"
           :searchable="true"
+          :nullable="true"
           class="filter__input"
           label="Search…"
         />
@@ -44,6 +45,7 @@
           v-model="locationValue"
           :options="locationOptions"
           :searchable="true"
+          :nullable="true"
           class="filter__input"
           label="Search…"
         />
@@ -68,7 +70,6 @@
 <script>
 import Dropbox from "@/components/Dropbox.vue";
 import FilterSingle from "@/components/FilterSingle.vue";
-import axios from "axios";
 
 export default {
   components: {
@@ -140,24 +141,7 @@ export default {
   },
   created() {
     this.$store.dispatch("fetchEmployees");
-
-    /*Location list GET request*/
-    axios({
-      method: "GET",
-      url: "http://localhost:3000/contacts"
-    })
-      .then(response => {
-        let contacts = response.data.data;
-
-        contacts.forEach(element => {
-          console.log(element.location.country);
-        });
-
-        /*this.locationOptions = result;*/
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.$store.dispatch("fetchLocations");
   }
 };
 </script>
@@ -206,7 +190,7 @@ export default {
     box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
     transition: 250ms;
 
-    &:not(ul):hover {
+    &:hover {
       background-color: lighten(#152235, 10%);
     }
   }
