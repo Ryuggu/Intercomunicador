@@ -86,6 +86,6 @@ export default {
 }
 
 .ticket-filters__text {
-    margin: auto 1.25rem; /* centers the text in the div + the display: flex on the parent */ 
+    margin:0.5rem 3rem ; /* centers the text in the div + the display: flex on the parent */ 
 }
 </style>

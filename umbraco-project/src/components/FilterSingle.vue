@@ -104,7 +104,7 @@ export default {
   justify-content: center;
 
   &:not(:last-child) {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 }
 .filter__option {
@@ -129,7 +129,7 @@ export default {
   background-color: #152235;
   width: 15rem;
   height: 3.75rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);

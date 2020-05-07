@@ -183,9 +183,9 @@ export default {
 
   &__input {
     background-color: #152235;
-    width: 13rem;
+    width: 15rem;
     height: 3.75rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
     transition: 250ms;
