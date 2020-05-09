@@ -28,7 +28,7 @@
       <form class="ticket-filters__text">
         <label for="name">Within office hours</label>
         <br />
-        <label for="name" class="ticket-filters__text--big">55</label>
+        <label for="name" class="ticket-filters__text--big">{{ withinHours }}</label>
       </form>
     </div>
 
@@ -36,7 +36,7 @@
       <form class="ticket-filters__text">
         <label for="name">Outside of office hours</label>
         <br />
-        <label for="name" class="ticket-filters__text--big">12</label>
+        <label for="name" class="ticket-filters__text--big">{{ outsideHours }}</label>
       </form>
     </div>
   </div>
@@ -53,6 +53,12 @@ export default {
     },
     totalTickets() {
       return this.$store.state.conversations.length;
+    },
+    withinHours() {
+      return this.$store.getters.withinHours.length;
+    },
+    outsideHours() {
+      return this.$store.getters.outsideHours.length;
     }
   },
   created() {

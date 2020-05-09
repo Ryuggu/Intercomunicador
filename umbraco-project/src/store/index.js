@@ -135,6 +135,24 @@ export default new Vuex.Store({
           }))
       )
     },
+
+    // Get tickets that are created within office hours
+    withinHours(state) {
+      return state.conversations
+        .filter(conv => {
+          var created = LuxonDateTime.fromSeconds(conv.created_at)
+          return created.hour >= 8 && created.hour < 22
+        })
+    },
+
+    // Get tickets that are created outside office hours
+    outsideHours(state) {
+      return state.conversations
+        .filter(conv => {
+          var created = LuxonDateTime.fromSeconds(conv.created_at)
+          return created.hour < 8 || created.hour >= 22
+        })
+    },
   },
 
 
