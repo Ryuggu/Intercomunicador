@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import TicketStats from "@/components/ticket__stats";
+import TicketStats from "@/components/ticketStats";
 export default {
  components: {
      TicketStats,

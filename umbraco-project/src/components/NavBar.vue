@@ -62,18 +62,18 @@ h1 {
 nav {
   display: flex;
   align-items: center;
-  justify-content: flex-end; //this has to be fixed to center the title :)
+  justify-content: center; //this has to be fixed to center the title :)
 }
 
 .menu-item a.active {
-  background-color: rgb(55, 65, 100);
+  background-color: #1B264F;
 }
 
 .menu-item {
   color: azure;
   padding: 0rem 2rem;
   position: relative;
-  display: flex;
+  display: flex;  
 }
 .menu-item a {
   color: inherit;

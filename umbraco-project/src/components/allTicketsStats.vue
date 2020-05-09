@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import EachTicketData from "@/components/ticket__column-headers.vue";
+import EachTicketData from "@/components/ticketColumnHeaders.vue";
 
 export default {
     components: {
@@ -60,9 +60,9 @@ export default {
     flex: 2;
     font-weight: 700;
     font-size: 2.5rem;
-    height: 3rem;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
+    height: 4rem;
+    margin-right: 0.8rem;
+    margin-top: 0.8rem;
     box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
     background-color: white;
 }

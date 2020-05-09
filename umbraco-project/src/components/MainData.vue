@@ -69,7 +69,7 @@ export default {
   font-weight: 700;
   font-size: 2rem;
   height: 12rem;
-  margin-right: 0.5rem;
+  margin-right: 0.8rem;
   margin-top: 1.25rem;
   box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
 }
