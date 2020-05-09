@@ -1,10 +1,10 @@
 <template>
-  <div class="appirance_ticket">
+  <div class="appearance_ticket">
     <div class="btn">01-01-2019</div>
 
     <div class="btn">31-12-2019</div>
 
-    <div class="btn">"✔ Show tickets"</div>
+    <div class="btn">{{ showTickets}}</div>
   </div>
 </template>
 
