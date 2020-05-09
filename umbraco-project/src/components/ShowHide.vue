@@ -4,7 +4,7 @@
 
     <div class="btn">31-12-2019</div>
 
-    <div class="btn">{{ showTickets}}</div>
+    <div class="btn noselect" v-on:click="toggleShowHide">{{ message }}</div>
   </div>
 </template>
 
@@ -12,13 +12,19 @@
 export default {
   data() {
     return {
-      showTickets: "✔️ Show tickets",
-      hideTickets: "❌ Hide tickets",
+      message: "✔️ Show tickets",
+      hidden: false
     };
   },
   methods: {
     toggleShowHide() {
-      /*ShowHide method goes here */
+      // Toggles between the the two following values when the button is clicked
+      if (this.hidden ) {
+          this.message = "✔️ Show tickets"
+      } else {
+          this.message = "❌ Hide tickets"
+      }
+      this.hidden = !this.hidden
     }
   }
 };
@@ -44,5 +50,10 @@ export default {
 
 .appearance_ticket {
   margin-left: 28%;
+}
+
+/*Disables highlighting of the button text when clicked*/
+.noselect {
+    user-select: none;
 }
 </style>
