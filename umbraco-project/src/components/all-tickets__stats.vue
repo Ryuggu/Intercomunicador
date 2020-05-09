@@ -1,5 +1,5 @@
 <template>
-
+<div>
     <div class="tickets-table">
         <div class="ticket-table__cell">
             <p class="ticket-table__data">
@@ -32,12 +32,18 @@
             </p>
         </div>
     </div>
+    <EachTicketData />
+</div>
   
 </template>
 
 <script>
-export default {
+import EachTicketData from "@/components/ticket__column-headers.vue";
 
+export default {
+    components: {
+        EachTicketData,
+    }
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  
+  <div>
     <div class="column-headers">
         <div class="ticket-header light-blue">
             <p class="ticket-header__text">
@@ -32,12 +32,17 @@
             </p>
         </div>
     </div>
+    <TicketStats />
+</div>
 
 </template>
 
 <script>
+import TicketStats from "@/components/ticket__stats";
 export default {
-
+ components: {
+     TicketStats,
+ }
 }
 </script>
 
