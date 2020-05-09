@@ -1,5 +1,5 @@
 <template>
-  
+  <div>
     <div class="column-headers">
         <div class="ticket-header light-blue">
             <p class="ticket-header__text">
@@ -32,12 +32,17 @@
             </p>
         </div>
     </div>
+    <TicketStats />
+</div>
 
 </template>
 
 <script>
+import TicketStats from "@/components/ticket__stats";
 export default {
-
+ components: {
+     TicketStats,
+ }
 }
 </script>
 
@@ -56,7 +61,7 @@ export default {
     font-size: 2.1rem;
     height: 48px;
     margin-right: 8px;
-    margin-top: 20px;
+    margin-top: 8px;
     box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
 }
 

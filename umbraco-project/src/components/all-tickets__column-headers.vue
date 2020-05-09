@@ -1,42 +1,67 @@
 <template> 
-       <div class="column-headers">
-        <div class="column-header blue">
-            <p class="column-header__text">
-                Creation date
-            </p>
+    <div v-bind:style="{display: displayTickets}">
+        <div class="column-headers">
+            <div class="column-header blue">
+                <p class="column-header__text">
+                    Creation date
+                </p>
+            </div>
+            <div class="column-header light-blue">
+                <p class="column-header__text">
+                    Avg. first response
+                </p>
+            </div>
+            <div class="column-header blue">
+                <p class="column-header__text">
+                    Avg. handling time
+                </p>
+            </div>
+            <div class="column-header column-header--small light-blue">
+                <p class="column-header__text">
+                    Within
+                </p>
+            </div>
+            <div class="column-header column-header--small light-blue">
+                <p class="column-header__text">
+                    Outside
+                </p>
+            </div>
+            <div class="column-header blue">
+                <p class="column-header__text">
+                    Tickets
+                </p>
+            </div>
         </div>
-        <div class="column-header light-blue">
-            <p class="column-header__text">
-                Avg. first response
-            </p>
-        </div>
-        <div class="column-header blue">
-            <p class="column-header__text">
-                Avg. handling time
-            </p>
-        </div>
-        <div class="column-header column-header--small light-blue">
-            <p class="column-header__text">
-                Within
-            </p>
-        </div>
-        <div class="column-header column-header--small light-blue">
-            <p class="column-header__text">
-                Outside
-            </p>
-        </div>
-        <div class="column-header blue">
-            <p class="column-header__text">
-                Tickets
-            </p>
-        </div>
-    </div>
+    <AllTicketsStats />
+</div>
     
 </template>
 
 <script>
-export default {
+import AllTicketsStats from "@/components/all-tickets__stats";
 
+
+export default {
+    components: {
+       AllTicketsStats,
+    },
+    data() {
+        return {
+        displayTickets: "block",
+        hiddenTickets: false
+        };
+    },
+    methods: {
+    toggleShowHideTickets() {      
+        if (this.hiddenTickets) {
+            this.displayTickets = "block"
+            this.hiddenTickets = false;
+        } else {
+            this.displayTickets = "none"
+            this.hiddenTickets = true;
+        }
+    }
+}
 }
 </script>
 

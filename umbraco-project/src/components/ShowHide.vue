@@ -1,17 +1,39 @@
 <template>
-  <div class="appirance_ticket">
+  <div class="appearance_ticket">
     <div class="btn">01-01-2019</div>
 
     <div class="btn">31-12-2019</div>
 
-    <div class="btn">"✔ Show tickets"</div>
+    <div class="btn noselect" v-on:click="toggleShowHideButtonText">{{ message }}</div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      message: "✔️ Show tickets",
+      hidden: false
+    };
+  },
+  methods: {
+    toggleShowHideButtonText() {
+      // Toggles between the the two following values when the button is clicked
+      if (this.hidden) {
+          this.message = "✔️ Show tickets"
+      } else {
+          this.message = "❌ Hide tickets"
+      }
+      this.hidden = !this.hidden
+    }
+  }
+};
+</script>
 
 
 
 <style scoped>
-.appirance_ticket {
+.appearance_ticket {
   margin: 2rem;
   display: flex;
 }
@@ -26,7 +48,12 @@
   margin: 1rem;
 }
 
-.appirance_ticket {
+.appearance_ticket {
   margin-left: 28%;
+}
+
+/*Disables highlighting of the button text when clicked*/
+.noselect {
+    user-select: none;
 }
 </style>

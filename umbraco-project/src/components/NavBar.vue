@@ -62,7 +62,7 @@ h1 {
 nav {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-end; //this has to be fixed to center the title :)
 }
 
 .menu-item a.active {
