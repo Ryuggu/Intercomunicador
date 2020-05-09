@@ -32,7 +32,7 @@
       </form>
     </div>
 
-    <div class="ticket-filters blue">
+    <div class="ticket-filters light-blue">
       <form class="ticket-filters__text">
         <label for="name">Outside of office hours</label>
         <br />
@@ -86,8 +86,13 @@ export default {
   box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
 }
 .ticket-filters__text{
-  height: 3.125rem;
+  // height: 3.125rem;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .ticket-filters__text--big {

@@ -149,7 +149,7 @@ export default {
 <style scoped lang="scss">
 .filter {
   background-color: #00f;
-  box-shadow:  0.1875rem  0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0.1875rem 0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -160,7 +160,7 @@ export default {
     justify-content: center;
 
     &:not(:last-child) {
-      margin-bottom: 1rem;
+      margin-bottom: 2.4rem;
     }
   }
 
@@ -170,15 +170,17 @@ export default {
     align-items: center;
 
     &:not(:last-child) {
-      margin-right: 2rem;
+      margin-right: 3.2rem;
     }
   }
 
   &__label {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 3.2rem;
+    margin-bottom: 1.2rem;
+    font-weight: bold;
+
     &--large {
-      font-size: 2rem;
+      font-size: 4.8rem;
     }
   }
 
@@ -186,7 +188,7 @@ export default {
     background-color: #152235;
     width: 10vw;
     height: 3.75rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
     transition: 250ms;
