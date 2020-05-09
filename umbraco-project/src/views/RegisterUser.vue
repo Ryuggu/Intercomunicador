@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit.prevent="register">
+    <form class="form-inline"  @submit.prevent="register">
       <label for="name">Name</label>
       <input v-model="name" type="text" name="name" value />
 
@@ -14,7 +14,7 @@
       <ul>
         <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
       </ul>
-      <router-link to="/login">Already have an account? Login.</router-link>
+      <router-link to="/loginUser">Already have an account? Login.</router-link>
     </form>
   </div>
 </template>
@@ -47,3 +47,44 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.form-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50rem;
+  height: 30rem;
+  padding: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  border: 1px solid black;
+  box-shadow: 0rem 0rem 1.2rem 0rem black; 
+  box-sizing: border-box;
+    font-size: 2rem;
+
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+    color: black;
+
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: black;
+}
+
+.form-inline button {
+  padding: 10px 20px;
+  background-color: #152235;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+</style>
