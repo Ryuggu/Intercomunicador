@@ -61,7 +61,7 @@ export default {
     font-size: 2.1rem;
     height: 48px;
     margin-right: 8px;
-    margin-top: 20px;
+    margin-top: 8px;
     box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
 }
 

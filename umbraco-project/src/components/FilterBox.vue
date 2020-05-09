@@ -153,6 +153,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  margin-top: 4rem;
 
   &__row {
     display: flex;

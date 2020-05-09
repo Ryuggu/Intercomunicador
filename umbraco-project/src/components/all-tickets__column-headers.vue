@@ -1,5 +1,5 @@
 <template> 
-    <div>
+    <div v-bind:style="{display: displayTickets}">
         <div class="column-headers">
             <div class="column-header blue">
                 <p class="column-header__text">
@@ -44,7 +44,24 @@ import AllTicketsStats from "@/components/all-tickets__stats";
 export default {
     components: {
        AllTicketsStats,
+    },
+    data() {
+        return {
+        displayTickets: "block",
+        hiddenTickets: false
+        };
+    },
+    methods: {
+    toggleShowHideTickets() {      
+        if (this.hiddenTickets) {
+            this.displayTickets = "block"
+            this.hiddenTickets = false;
+        } else {
+            this.displayTickets = "none"
+            this.hiddenTickets = true;
+        }
     }
+}
 }
 </script>
 
