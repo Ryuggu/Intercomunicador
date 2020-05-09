@@ -133,7 +133,7 @@ export default new Vuex.Store({
     }
   ,
     fetchEmployees(context) {
-      axios.get("http://localhost:3000/admins").then(response => {
+      axios.get("http://localhost:5000/admins").then(response => {
         let admins = response.data.admins;
         let result = admins.filter(
           employee => !context.state.ignoredEmployeeIds.includes(parseInt(employee.id))
