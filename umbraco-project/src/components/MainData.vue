@@ -4,7 +4,7 @@
       <form class="ticket-filters__text">
         <label for="name">Avg. first response</label>
         <br />
-        <label for="name">1hour 3min 42sec</label>
+        <label for="name">{{ averageFirstResponse.toFormat("d'd' h'h' m'm' s's'") }}</label>
       </form>
     </div>
 
@@ -12,7 +12,7 @@
       <form class="ticket-filters__text">
         <label for="name">Avg. handling time</label>
         <br />
-        <label for="name">6days 14hours 32min</label>
+        <label for="name">{{ averageHandlingTime.toFormat("d'd' h'h' m'm' s's'") }}</label>
       </form>
     </div>
 
@@ -45,6 +45,12 @@
 <script>
 export default {
   computed: {
+    averageFirstResponse() {
+      return this.$store.getters.averageFirstResponse;
+    },
+    averageHandlingTime() {
+      return this.$store.getters.averageHandlingTime;
+    },
     totalTickets() {
       return this.$store.state.conversations.length;
     }
