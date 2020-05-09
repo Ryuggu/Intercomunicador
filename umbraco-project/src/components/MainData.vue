@@ -64,16 +64,20 @@ export default {
 }
 
 .ticket-filters {
-  display: flex;
-  flex: 1;
-  font-weight: 700;
-  height: 80px;
-  margin-right: 8px;
-  margin-top: 20px;
-  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
+    display: flex; 
+    flex: 1;
+    font-weight: 700;
+    font-size: 2rem;
+    height: 6rem;
+    margin-right: 0.5rem;
+    margin-top: 1.25rem;
+    box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
 }
-.ticket-filters__text {
-  height: 50px;
+.ticket-filters__text{
+  height: 3.125rem;
+      font-size: 2rem;
+
+
 }
 
 .ticket-filters:last-of-type {
@@ -82,6 +86,6 @@ export default {
 }
 
 .ticket-filters__text {
-  margin: auto 20px; /* centers the text in the div + the display: flex on the parent */
+    margin:0.5rem 3rem ; /* centers the text in the div + the display: flex on the parent */ 
 }
 </style>

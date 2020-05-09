@@ -104,7 +104,7 @@ export default {
   justify-content: center;
 
   &:not(:last-child) {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 }
 .filter__option {
@@ -113,23 +113,23 @@ export default {
   align-items: center;
 
   &:not(:last-child) {
-    margin-right: 32px;
+    margin-right: 2rem;
   }
 }
 .filter__label {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 
   &--large {
-    font-size: 48px;
+    font-size: 3rem;
   }
 }
 .filter__input {
   background-color: #152235;
-  width: 240px;
-  height: 60px;
-  font-size: 24px;
+  width: 15rem;
+  height: 3.75rem;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);

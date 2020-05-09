@@ -149,17 +149,17 @@ export default {
 <style scoped lang="scss">
 .filter {
   background-color: #00f;
-  box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
+  box-shadow:  0.1875rem  0.1875rem 0.375rem 0 rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 1rem;
 
   &__row {
     display: flex;
     justify-content: center;
 
     &:not(:last-child) {
-      margin-bottom: 16px;
+      margin-bottom: 1rem;
     }
   }
 
@@ -169,26 +169,23 @@ export default {
     align-items: center;
 
     &:not(:last-child) {
-      margin-right: 32px;
+      margin-right: 2rem;
     }
   }
 
   &__label {
-    font-size: 32px;
-    font-weight: bold;
-    margin-bottom: 16px;
-
+    font-size: 2rem;
+    margin-bottom: 1rem;
     &--large {
-      font-size: 48px;
+      font-size: 2rem;
     }
   }
 
   &__input {
     background-color: #152235;
-    width: 240px;
-    height: 60px;
-    font-size: 24px;
-    font-weight: bold;
+    width: 15rem;
+    height: 3.75rem;
+    font-size: 1.5rem;
     cursor: pointer;
     box-shadow: 3px 3px 6px 0px rgba(0, 0, 0, 0.5);
     transition: 250ms;
@@ -200,9 +197,9 @@ export default {
 
   &__apply {
     background-color: #39d18c;
-    width: 240px;
-    height: 60px;
-    font-size: 32px;
+    width: 13rem;
+    height: 3.75rem;
+    font-size: 2rem;
     font-weight: bold;
     border: none;
     cursor: pointer;

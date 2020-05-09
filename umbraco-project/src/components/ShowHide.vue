@@ -1,16 +1,11 @@
 <template>
-  <div class="appearance_ticket">
+  <div class="appirance_ticket">
     <div class="btn">01-01-2019</div>
 
-      <form>
-              <div class="start_date">01-01-2019</div>
+    <div class="btn">31-12-2019</div>
 
-              <div class="start_date">31-12-2019</div>
-            
-          <input type="button" value="✔ Show tickets">
-         
-      </form>
-    </div>
+    <div class="btn">"✔ Show tickets"</div>
+  </div>
 </template>
 
 <script>

@@ -101,7 +101,7 @@ export default {
     background-color: inherit;
     border: none;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 2rem;
     cursor: pointer;
     height: 100%;
     user-select: none !important;

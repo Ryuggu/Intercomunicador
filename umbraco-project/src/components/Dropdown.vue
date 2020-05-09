@@ -1,7 +1,7 @@
 <template>
 
 <div class="menu-item" @click="isOpen =!isOpen"><a href="#">
-        {{title}}<a href="#"><vue-fontawesome icon="cog" size="1.5" color="lightgray"></vue-fontawesome></a> </a>
+        {{title}}<a href="#"><vue-fontawesome icon="cog" size="2.5" color="lightgray"></vue-fontawesome></a> </a>
         <transition name="fade" apper>
             
         <div class="sub-menu" v-if="isOpen">
@@ -30,25 +30,18 @@ export default {
 nav .menu-item .sub-menu{
     position: absolute;
     background-color:#F6EEE7;
-    padding: 25px 15px;
-    top:100%;
-    left:10%;
+    padding: 1rem;
+    top:4rem;
+    right:1rem;
     inline-size: max-content;
     color:inherit;
     
 }
 nav .menu-item .sub-menu a{
+    font-size: 1.6rem;
     color:black;
-    padding:35px 5px;
+  padding: 1rem;
     text-decoration: none;
     }
-.fade-enter-activ,
-.fade-leave-active{
-    transition: all.4s ease-out;
 
-}
-.fade-enter,
-.fade-enter-to{
-    opacity: 0;
-}
 </style>

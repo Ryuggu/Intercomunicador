@@ -5,7 +5,10 @@
         <FilterBox />
         <MainData />
         <ShowHide />
-        <DailyTicketsStats />
+        <AllTicketsColumnHeaders />
+        <AllTicketsStats />
+        <TicketColumnHeaders />
+        <TicketStats />
       </div>
     </template>
   </div>
@@ -14,7 +17,10 @@
 <script>
 import axios from "axios";
 import FilterBox from "@/components/FilterBox.vue";
-import DailyTicketsStats from "@/components/all-tickets__column-headers";
+import AllTicketsColumnHeaders from "@/components/all-tickets__column-headers";
+import AllTicketsStats from "@/components/all-tickets__stats";
+import TicketColumnHeaders from "@/components/ticket__column-headers";
+import TicketStats from "@/components/ticket__stats";
 import MainData from "@/components/MainData";
 import ShowHide from "@/components/ShowHide";
 
@@ -22,7 +28,10 @@ export default {
   name: "Home",
   components: {
     FilterBox,
-    DailyTicketsStats,
+    AllTicketsColumnHeaders,
+    AllTicketsStats,
+    TicketColumnHeaders,
+    TicketStats,
     MainData,
     ShowHide
   },
