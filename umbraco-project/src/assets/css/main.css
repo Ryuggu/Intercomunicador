@@ -7,10 +7,13 @@
     padding: 0;
     color: white;
     font-family: 'Lato', sans-serif;
-    font-size: 62.5%;
-
-
+    
 }
+
+html {
+    font-size: 62.5%; /*10px is the default value*/
+}
+
 body {
     background-color: #E3DFDD;
     font-size: 1.25rem;

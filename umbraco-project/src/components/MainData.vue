@@ -20,7 +20,7 @@
       <form class="ticket-filters__text">
         <label for="name">Total tickets</label>
         <br />
-        <label for="name">{{ totalTickets }}</label>
+        <label for="name" class="ticket-filters__text--big">{{ totalTickets }}</label>
       </form>
     </div>
 
@@ -28,7 +28,7 @@
       <form class="ticket-filters__text">
         <label for="name">Within office hours</label>
         <br />
-        <label for="name">55</label>
+        <label for="name" class="ticket-filters__text--big">55</label>
       </form>
     </div>
 
@@ -36,7 +36,7 @@
       <form class="ticket-filters__text">
         <label for="name">Outside of office hours</label>
         <br />
-        <label for="name">12</label>
+        <label for="name" class="ticket-filters__text--big">12</label>
       </form>
     </div>
   </div>
@@ -70,20 +70,22 @@ export default {
 }
 
 .ticket-filters {
-    display: flex; 
-    flex: 1;
-    font-weight: 700;
-    font-size: 2rem;
-    height: 6rem;
-    margin-right: 0.5rem;
-    margin-top: 1.25rem;
-    box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
+  display: flex; 
+  flex: 1;
+  font-weight: 700;
+  font-size: 2rem;
+  height: 12rem;
+  margin-right: 0.8rem;
+  margin-top: 1.25rem;
+  box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
 }
 .ticket-filters__text{
   height: 3.125rem;
-      font-size: 2rem;
+  font-size: 2rem;
+}
 
-
+.ticket-filters__text--big {
+  font-size: 4rem;
 }
 
 .ticket-filters:last-of-type {
@@ -92,6 +94,6 @@ export default {
 }
 
 .ticket-filters__text {
-    margin:0.5rem 3rem ; /* centers the text in the div + the display: flex on the parent */ 
+  margin:0.5rem 3rem ; /* centers the text in the div + the display: flex on the parent */ 
 }
 </style>

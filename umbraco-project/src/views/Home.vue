@@ -14,7 +14,7 @@
 <script>
 import axios from "axios";
 import FilterBox from "@/components/FilterBox.vue";
-import DailyTicketsStats from "@/components/all-tickets__column-headers";
+import DailyTicketsStats from "@/components/allTicketsColumnHeaders";
 import MainData from "@/components/MainData";
 import ShowHide from "@/components/ShowHide";
 

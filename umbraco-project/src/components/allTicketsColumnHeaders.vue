@@ -1,5 +1,7 @@
 <template> 
-    <div>
+<div>
+    <ShowHide v-model="showHide"/>
+    <div v-bind:style="{display: displayTickets}">
         <div class="column-headers">
             <div class="column-header blue">
                 <p class="column-header__text">
@@ -32,19 +34,38 @@
                 </p>
             </div>
         </div>
-    <AllTicketsStats />
+        <AllTicketsStats />
+    </div>
 </div>
     
 </template>
 
 <script>
-import AllTicketsStats from "@/components/all-tickets__stats";
-
+import AllTicketsStats from "@/components/allTicketsStats.vue";
+import ShowHide from "@/components/ShowHide.vue";
 
 export default {
     components: {
-       AllTicketsStats,
+        ShowHide,
+        AllTicketsStats,
+    },
+    data() {
+        return {
+        displayTickets: "block",
+        hiddenTickets: false
+        };
+    },
+    methods: {
+    toggleShowHideTickets() {      
+        if (this.hiddenTickets) {
+            this.displayTickets = "block"
+            this.hiddenTickets = false;
+        } else {
+            this.displayTickets = "none"
+            this.hiddenTickets = true;
+        }
     }
+}
 }
 </script>
 
@@ -59,10 +80,10 @@ export default {
     display: flex; 
     flex: 2;
     font-weight: 700;
-    font-size: 2.1rem;
+    font-size: 2rem;
     height: 5rem;
-    margin-right: 0.5rem;
-    margin-top: 1.25rem;
+    margin-right: 0.8rem;
+    margin-top: 1rem;
     box-shadow: 3px 3px 6px 0px rgba(0,0,0,0.5);
 }
 

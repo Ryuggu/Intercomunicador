@@ -153,6 +153,7 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  margin-top: 4rem;
 
   &__row {
     display: flex;
@@ -183,7 +184,7 @@ export default {
 
   &__input {
     background-color: #152235;
-    width: 15rem;
+    width: 10vw;
     height: 3.75rem;
     font-size: 1.5rem;
     cursor: pointer;
