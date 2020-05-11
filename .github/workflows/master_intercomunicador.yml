@@ -29,7 +29,10 @@ jobs:
 
     - name: node index.js
       run: |
+        cd /
+        cd node-intercom
         node index.js
+        cd /
 
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v1
